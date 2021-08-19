@@ -66,6 +66,7 @@ public class XFrameOptionsFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) throws ServletException, IOException {
         response.addHeader(HEADER_NAME, headerValue());
+        response.addHeader("X-Content-Type-Options", "nosniff");
         filterChain.doFilter(request, response);
     }
 
